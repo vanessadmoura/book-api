@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from flask import Flask
 
 db = SQLAlchemy()
 
@@ -9,5 +10,5 @@ def configure(app):
 
 class Book(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    livro = db.Column(db.String(255))
+    livro = db.Column(db.String(300))
     escritor = db.Column(db.String(255))
