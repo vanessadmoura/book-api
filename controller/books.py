@@ -1,6 +1,6 @@
 from flask import Blueprint, current_app, request, jsonify
-from .model import Book
-from .serealizer import BookSchema
+from app.model import Book
+from app.serealizer import BookSchema
 
 bp_books = Blueprint('books', __name__)
 
@@ -33,11 +33,11 @@ def modify_book(id):
     query = Book.query.filter(Book.id == id)
     query.update(request.json)
     current_app.db.session.commit()
-    return bs.jsonify(query.first())
+    return bs.jsonify(query.first()), 200
 
 
 @bp_books.route('/book/<id>', methods=['DELETE'])
 def delete_book(id):
     Book.query.filter(Book.id == id).delete()
     current_app.db.session.commit()
-    return jsonify('Deletado!')
+    return jsonify('Deletado!'), 200
