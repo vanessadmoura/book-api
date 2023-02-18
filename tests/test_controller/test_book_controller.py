@@ -1,6 +1,14 @@
-def test_get_all_books(client):
+from tests.utils.create_book import create_valid_list_book
+
+
+def test_get_all_books(client, mocker):
+    list_books_mock = mocker.MagicMock(return_value=create_valid_list_book())
+    mocker.patch("controller.books.get_all_book", create_valid_list_book())
+
     response = client.get("/book")
+
     assert response.status_code == 200
+    assert len(response.json) == 2
     
 def test_get_book_by_id(client):
     response = client.get("/book/1")

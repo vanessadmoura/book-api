@@ -7,7 +7,6 @@ import pymysql
 
 pymysql.install_as_MySQLdb()
 
-
 def create_app():
     app = Flask(__name__)
 
