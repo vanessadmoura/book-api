@@ -18,7 +18,7 @@ def create_app():
 
     Migrate(app, app.db)
 
-    from controller.books import bp_books
+    from controller.book_controller import bp_books
     app.register_blueprint(bp_books)
 
     return app
