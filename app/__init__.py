@@ -22,7 +22,7 @@ api = Api(blueprint,
 def create_app():
     app = Flask(__name__)
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/books'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://user:password@localhost:3306/db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     config_db(app)
