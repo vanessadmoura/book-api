@@ -8,6 +8,7 @@ from .serealizer import configure as config_ma
 import pymysql
 from .utils.namespaces import book_ns
 
+
 pymysql.install_as_MySQLdb()
 
 blueprint = Blueprint('api', __name__, url_prefix='/api/v1')
@@ -16,6 +17,7 @@ api = Api(blueprint,
           title='Book API',
           description='API - Book',
           doc='/docs')
+
 
 def create_app():
     app = Flask(__name__)

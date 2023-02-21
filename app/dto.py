@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 from flask_restx import fields
 from .utils.namespaces import book_ns
 
+
 book_dto = book_ns.model('Book', { 
        'livro': fields.String(
         description='livro',
