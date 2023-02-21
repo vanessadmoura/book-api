@@ -5,7 +5,7 @@ def test_get_all_books_when_successfully(client, mocker):
     list_books_mock = mocker.MagicMock(return_value=create_valid_list_book())
     mocker.patch("controller.book_controller.get_all_book", list_books_mock)
 
-    response = client.get("/book")
+    response = client.get("/api/v1/book")
 
     assert response.status_code == 200
     assert len(response.json) == 2
@@ -15,7 +15,7 @@ def test_get_book_by_id_when_successfully(client, mocker):
     list_book_mock = mocker.MagicMock(return_value=create_valid_book())
     mocker.patch("controller.book_controller.get_book_by_id", list_book_mock)
 
-    response = client.get("/book/1")
+    response = client.get("/api/v1/book/1")
 
     assert response.status_code == 200
     assert len(response.json) == 1
@@ -37,7 +37,7 @@ def test_register_book_when_successfully(client, mocker):
     register_book_mock = mocker.MagicMock()
     mocker.patch("controller.book_controller.register_book", register_book_mock)
     
-    response = client.post("/book", json=body)
+    response = client.post("/api/v1/book", json=body)
 
     assert response.status_code == 201
     assert "id" in response.json

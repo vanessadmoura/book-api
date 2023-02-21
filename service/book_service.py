@@ -9,7 +9,7 @@ def get_all_book():
 
 
 def get_book_by_id(id):
-    return Book.query.filter(Book.id == id)
+    return Book.query.filter(Book.id == id).first()
 
 
 def register_book(book):
