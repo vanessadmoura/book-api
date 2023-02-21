@@ -28,9 +28,11 @@ def register():
 
 @bp_books.route('/book/<id>', methods=['PUT'])
 def modify(id):
-    book_to_be_saved = request.json
-    query = modify_book(id, book_to_be_saved)
-    return bs.jsonify(query.first()), 200
+    book_json = request.get_json()
+    book = bs.load(book_json)
+    
+    updated_book = modify_book(id, book)
+    return bs.dump(updated_book), 200
 
 
 @bp_books.route('/book/<id>', methods=['DELETE'])

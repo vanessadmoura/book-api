@@ -19,7 +19,7 @@ def create_valid_list_book():
 
 def create_response_successful_generate():
     return {
-    "id": "any_value",
+    "id": 1,
     "livro": "any_value",
     "escritor": "any_value"
     }

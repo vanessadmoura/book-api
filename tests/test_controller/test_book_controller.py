@@ -38,8 +38,8 @@ def test_register_book(client, mocker):
 def test_modify_book(client, mocker):
     body = {"livro": "any_value",
             "escritor": "any_value"}
-    modify_book_mock = mocker.MagicMock()
-    mocker.patch("controller.book_controller.modify_book", modify_book_mock)
+    modify_book_response_mock = mocker.MagicMock(return_value=create_response_successful_generate())
+    mocker.patch("controller.book_controller.modify_book", modify_book_response_mock)
 
     response = client.put("/book/1", json=body)
     assert response.status_code == 200
